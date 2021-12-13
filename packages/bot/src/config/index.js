@@ -1,7 +1,12 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const DISCORD_TOKEN=process.env.DISCORD_TOKEN || '';
+const guildId=process.env.GUILD_ID || '';
+const clientId=process.env.CLIENT_ID || '';
 
-module.export = {
-    DISCORD_TOKEN
+const config = {
+    DISCORD_TOKEN,
+}
+module.exports = {
+    config
 }
