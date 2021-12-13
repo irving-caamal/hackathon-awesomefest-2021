@@ -7,6 +7,10 @@ const clientId=process.env.CLIENT_ID || '';
 const config = {
     DISCORD_TOKEN,
 }
+
+const PREFIX=process.env.PREFIX || '';
+
+
 module.exports = {
-    config
+    DISCORD_TOKEN, PREFIX
 }
