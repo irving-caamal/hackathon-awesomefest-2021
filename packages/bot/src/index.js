@@ -95,5 +95,5 @@ client.on("messageCreate", async (message) => {
     }
  });
 
-console.log({config})
+console.log({config: config.DISCORD_TOKEN})
 client.login(config.DISCORD_TOKEN);

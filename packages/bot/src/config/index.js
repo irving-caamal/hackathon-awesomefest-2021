@@ -6,11 +6,11 @@ const clientId=process.env.CLIENT_ID || '';
 
 const config = {
     DISCORD_TOKEN,
+    guildId,
+    clientId
 }
 
 const PREFIX=process.env.PREFIX || '';
 
 
-module.exports = {
-    DISCORD_TOKEN, PREFIX
-}
+module.exports = config
