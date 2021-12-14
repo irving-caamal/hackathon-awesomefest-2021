@@ -1,13 +1,13 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
-const searchJobs = require('../services/getOnBoardApi')
+const {searchJobs} = require('../services/getOnBoardApi')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('search')
+        .addStringOption(option => option.setName('query').setDescription('Enter a query (eg. "python developer")'))
         .setDescription('Search for jobs'),
-    async execute(message){
-        if(message.content.startsWith('/')) {
-            let queryLength = message.content.split(' ')
-            let query = queryLength.splice(1, queryLength.length - 1).join(' ')
+    async execute(message) {
+        const query = message.options.getString('query');
+        if(query) {
             const jobs = await searchJobs(query)
             if (!jobs.data) {
                 message.reply('Sorry there are no jobs matching your search');
@@ -51,7 +51,7 @@ module.exports = {
                 };
                 embeds.push(newEmbed)
             })
-            message.channel.send({embeds: embeds});
+            return message.reply({embeds: embeds});
         }
     }
 }
