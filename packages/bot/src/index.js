@@ -1,7 +1,6 @@
 const config = require('./config')
 const Discord  = require("discord.js");
 const fetch = require("node-fetch");
-const config = require('./config')
 
 const { Collection, Intents } = require("discord.js");
 
