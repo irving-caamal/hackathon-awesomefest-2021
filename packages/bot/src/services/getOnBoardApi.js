@@ -10,7 +10,7 @@ function searchJobs(query = 'php', per_page = 2, page = 1, expand = ['company'])
         return data;
     })
     .catch(error => {
-        console.log(error)
+        console.error(error)
     })
 }
 module.exports = { searchJobs }
