@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node build/index.js",
     "postinstall": "patch-package",
-    "dev": "concurrently \"tsc -w\" \"nodemon build/index.js\""
+    "dev": "nodemon src/index.js"
   },
   "license": "MIT",
   "dependencies": {

@@ -7,11 +7,12 @@ module.exports = {
     async execute(message,client){
         if(!message.content.startsWith("!")){return;}
         var command = message.content.substring(1);
+        command = command.split(" ")[0];//get everything that pass , split and get only the command
         //console.log(command)
         if(!client.commands.has(command)) return;
     
         try{
-            await client.commands.get(command).execute(message);
+            await client.commands.get(command).execute(message,client);
         } catch(error){
             console.error(error);
             await msg.reply({content:"there was an error", ephemeral:true})
