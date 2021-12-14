@@ -4,23 +4,23 @@ const { MessageActionRow, MessageButton, IntegrationApplication } = require('dis
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('button')
-        .setDescription('Replies with some buttons'),
+        .setDescription('Hola ¿Deseas mantenerte informado acerca de los ultimos trabajos segun tus ROLES?'),
     async execute(interaction){
         const row = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                .setCustomId('PROFESIONAL')
-                .setLabel('Soy Profesional! 👩🏻‍💻 ')
+                .setCustomId('interesado')
+                .setLabel('Estoy interesado!! 👩🏻‍💻 ')
                 .setStyle('PRIMARY'),
 
                 new MessageButton()
-                .setCustomId('EMPLEADOR')
-                .setLabel('Soy Empleador! 👀 ')
-                .setStyle('SECONDARY'),
+                .setCustomId('no')
+                .setLabel('Por ahora no!! 👀 ')
+                .setStyle('DANGER'),
             )
 
             interaction.reply({
-                content:'You are on board!!', components:[row]
+                content:'Hola 😄 ¿Deseas mantenerte informado acerca de los ultimos trabajos segun tus ROLES?!', components:[row]
             });
     }
 }

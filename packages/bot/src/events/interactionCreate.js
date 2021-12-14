@@ -7,11 +7,11 @@ module.exports = {
     async execute(interaction,client){
 
         if(interaction.isButton()){
-            if(interaction.customId == 'PROFESIONAL'){
-                interaction.reply("you clicked " + interaction.customId+"AQUI VA MENU DE PROFESIONAL");
+            if(interaction.customId == 'interesado'){
+                
             }
-            if(interaction.customId == 'EMPLEADOR'){
-                interaction.reply("you clicked " + interaction.customId+"AQUI VA MENU DE EMPLEADOR");
+            if(interaction.customId == 'no'){
+                interaction.reply("No te preocupes 😅, cuando gustes avísame con el comando `/search` cuando necesites algún empleo relacionado con tu ROL.");
             }
         }
 

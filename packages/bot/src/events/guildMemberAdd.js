@@ -7,7 +7,7 @@ module.exports = {
     on:true,
     async execute(member,client){
         const channel_welcome = member.guild.channels.cache.get("920188931935457290");
-
+        member.send("Welcome to the server!");
         if(!channel_welcome) return;
 
         const newMemberEmbed = new Discord.MessageEmbed()

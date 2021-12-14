@@ -1,16 +1,20 @@
 const Discord  = require("discord.js");
-const { memberCounter } = require("../counters/member-counter");
+const { button } = require("../commands/buttons");
+const { MessageActionRow, MessageButton, IntegrationApplication } = require('discord.js');
+
 module.exports = {
     name: "ready",
     once:true,
-    async execute (client){
+    async execute (client,interaction){
     
         client.user.setActivity("Getting Jobs!! 👌",{
             type: "COMPETING",
             name: "Discord",
         });
+
         let channel = client.channels.cache.get("920172355987324939")
-    /** ROLES POR PAISS  */
+
+        /** ROLES POR PAISS  */
         let argentina = channel.guild.roles.cache.get("920348906892689408")
         let brasil = channel.guild.roles.cache.get("920349775637925888")
         let bolivia = channel.guild.roles.cache.get("920349824606433320")
@@ -31,7 +35,7 @@ module.exports = {
         let republica = channel.guild.roles.cache.get("920350689874554970")
         let uruguay = channel.guild.roles.cache.get("920350729384902656")
         let venezuela = channel.guild.roles.cache.get("920350793457074176")
-        
+
 
         const argentinaEmoji = '🇦🇷';
         const brasilEmoji = '🇧🇷';
@@ -235,12 +239,68 @@ module.exports = {
                 return;
             }
         });
+
+    /** ROLES POR STATUS  */
+    let EmbedStatus = new Discord.MessageEmbed()
+    .setColor(client.color)
+    .setTitle("✨Roles según tu estatus")
+    .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+    .setDescription("¡Aqui puedes elegir los roles de tu preferencia segun tu estatus!!!")
+    .setTimestamp()
+    .setFooter(`${client.user.username}`, client.user.displayAvatarURL({dynamic: true}))
+
+    const menu2 = new Discord.MessageActionRow().addComponents(new Discord.MessageSelectMenu()
+    .setCustomId("menu2")
+    .setMaxValues(3)
+    .setMinValues(1)
+    .setPlaceholder("¡¡Esperamos tus roles !!")
+    .addOptions([{label: "🔍 Buscando trabajo", description: "🔍 Buscando trabajoDescripcion", emoji: "🔍", value: "buscando"}, {label: "💼 Actualmente con trabajo", description: "💼 Actualmente con trabajo Descripcion", emoji: "💼", value: "contrabajo"}, 
+    {label: "👔 Contratando talento", description: "Backend Descripcion", emoji: "👔", value: "contratando"},
+    {label: "📚 Estudiante", description: "FullStack Descripcion", emoji: "📚", value: "estudiante"},
+    {label: "🤓 Mentor", description: "FullStack Descripcion", emoji: "🤓", value: "mentor"},
+    ]))
+    
+    
+
+    let msg2 = await channel.send({embeds: [EmbedStatus], components: [menu2]})
+
+    const filter2 = async() => true;
+    const collector2 = msg2.createMessageComponentCollector({filter2})
+
+        collector2.on("collect", async menu2 => {
+
+                    
+        let buscando = channel.guild.roles.cache.get("920350844044591105")
+        let contrabajo = channel.guild.roles.cache.get("920350881529077770")
+        let contratando = channel.guild.roles.cache.get("920350913716166737")
+        let estudiante = channel.guild.roles.cache.get("920350950873509978")
+        let mentor = channel.guild.roles.cache.get("920350986319573043")
+
+            for(let i = 0; i < menu.values.length; i++) {
+                if(menu.values[i] === "buscando") menu.member.roles.add(buscando.id)
+                if(menu.values[i] === "contrabajo") menu.member.roles.add(contrabajo.id)
+                if(menu.values[i] === "contratando") menu.member.roles.add(contratando.id)
+                if(menu.values[i] === "estudiante") menu.member.roles.add(estudiante.id)
+                if(menu.values[i] === "mentor") menu.member.roles.add(mentor.id)
+            }
+
+            if(menu.member.roles.cache.has(buscando.id) && !menu.values.includes("buscando")) menu.member.roles.remove(buscando.id)
+            if(menu.member.roles.cache.has(contrabajo.id) && !menu.values.includes("contrabajo")) menu.member.roles.remove(contrabajo.id)
+            if(menu.member.roles.cache.has(contratando.id) && !menu.values.includes("contratando")) menu.member.roles.remove(contratando.id)
+            if(menu.member.roles.cache.has(estudiante.id) && !menu.values.includes("estudiante")) menu.member.roles.remove(estudiante.id)
+            if(menu.member.roles.cache.has(mentor.id) && !menu.values.includes("mentor")) menu.member.roles.remove(mentor.id)
+           
+
+            menu.reply({content: "¡ Tu rol ha cambiado !", ephemeral: true})
+        })
+
+
     /** ROLES POR TRABAJOOO  */
     let Embed = new Discord.MessageEmbed()
     .setColor(client.color)
-    .setTitle("¡Escoge el rol de tu preferencia!")
+    .setTitle("📗 Roles por área de mayor conocimiento!!! 📗")
     .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
-    .setDescription("¡Aqui puedes elegir los roles de tu preferencia!")
+    .setDescription("¡Aqui puedes elegir los roles de tu preferencia segun tus conocimientos, puedes elegir hasta 3 opciones!!!")
     .setTimestamp()
     .setFooter(`${client.user.username}`, client.user.displayAvatarURL({dynamic: true}))
 
@@ -264,52 +324,72 @@ module.exports = {
     
 
     let msg = await channel.send({embeds: [Embed], components: [menu]})
-
+   
     const filter = async() => true;
     const collector = msg.createMessageComponentCollector({filter})
 
-    collector.on("collect", async menu => {
+        collector.on("collect", async(menu,button) => {
 
-        let ui = channel.guild.roles.cache.get("920164764112531496")
-        let frontend = channel.guild.roles.cache.get("920165346281926716")
-        let backend = channel.guild.roles.cache.get("920165497016844298")
-        let fullstack = channel.guild.roles.cache.get("920165563827892234")
-        let mobile = channel.guild.roles.cache.get("920165640306823168")
-        let datascience = channel.guild.roles.cache.get("920165744891793418")
-        let devops = channel.guild.roles.cache.get("920165846779842601")
-        let ai = channel.guild.roles.cache.get("920165907962167328")
-        let agile = channel.guild.roles.cache.get("920165943357865984")
-        let gaming = channel.guild.roles.cache.get("920166040321794069")
-        let marketing = channel.guild.roles.cache.get("920166107401289748")
+            let ui = channel.guild.roles.cache.get("920164764112531496")
+            let frontend = channel.guild.roles.cache.get("920165346281926716")
+            let backend = channel.guild.roles.cache.get("920165497016844298")
+            let fullstack = channel.guild.roles.cache.get("920165563827892234")
+            let mobile = channel.guild.roles.cache.get("920165640306823168")
+            let datascience = channel.guild.roles.cache.get("920165744891793418")
+            let devops = channel.guild.roles.cache.get("920165846779842601")
+            let ai = channel.guild.roles.cache.get("920165907962167328")
+            let agile = channel.guild.roles.cache.get("920165943357865984")
+            let gaming = channel.guild.roles.cache.get("920166040321794069")
+            let marketing = channel.guild.roles.cache.get("920166107401289748")
 
 
-        for(let i = 0; i < menu.values.length; i++) {
-            if(menu.values[i] === "ux/ui") menu.member.roles.add(ui.id)
-            if(menu.values[i] === "frontend") menu.member.roles.add(frontend.id)
-            if(menu.values[i] === "backend") menu.member.roles.add(backend.id)
-            if(menu.values[i] === "fullstack") menu.member.roles.add(fullstack.id)
-            if(menu.values[i] === "mobile") menu.member.roles.add(mobile.id)
-            if(menu.values[i] === "datascience") menu.member.roles.add(datascience.id)
-            if(menu.values[i] === "devops") menu.member.roles.add(devops.id)
-            if(menu.values[i] === "ai") menu.member.roles.add(ai.id)
-            if(menu.values[i] === "agile") menu.member.roles.add(agile.id)
-            if(menu.values[i] === "gaming") menu.member.roles.add(gaming.id)
-            if(menu.values[i] === "marketing") menu.member.roles.add(marketing.id)
-        }
+            for(let i = 0; i < menu.values.length; i++) {
+                if(menu.values[i] === "ux/ui") menu.member.roles.add(ui.id)
+                if(menu.values[i] === "frontend") menu.member.roles.add(frontend.id)
+                if(menu.values[i] === "backend") menu.member.roles.add(backend.id)
+                if(menu.values[i] === "fullstack") menu.member.roles.add(fullstack.id)
+                if(menu.values[i] === "mobile") menu.member.roles.add(mobile.id)
+                if(menu.values[i] === "datascience") menu.member.roles.add(datascience.id)
+                if(menu.values[i] === "devops") menu.member.roles.add(devops.id)
+                if(menu.values[i] === "ai") menu.member.roles.add(ai.id)
+                if(menu.values[i] === "agile") menu.member.roles.add(agile.id)
+                if(menu.values[i] === "gaming") menu.member.roles.add(gaming.id)
+                if(menu.values[i] === "marketing") menu.member.roles.add(marketing.id)
+            }
 
-        if(menu.member.roles.cache.has(ui.id) && !menu.values.includes("ux/ui")) menu.member.roles.remove(ui.id)
-        if(menu.member.roles.cache.has(frontend.id) && !menu.values.includes("frontend")) menu.member.roles.remove(frontend.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("backend")) menu.member.roles.remove(backend.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("fullstack")) menu.member.roles.remove(fullstack.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("mobile")) menu.member.roles.remove(mobile.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("datascience")) menu.member.roles.remove(datascience.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("devops")) menu.member.roles.remove(devops.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("ai")) menu.member.roles.remove(ai.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("agile")) menu.member.roles.remove(agile.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("gaming")) menu.member.roles.remove(gaming.id)
-        if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("marketing")) menu.member.roles.remove(marketing.id)
+            if(menu.member.roles.cache.has(ui.id) && !menu.values.includes("ux/ui")) menu.member.roles.remove(ui.id)
+            if(menu.member.roles.cache.has(frontend.id) && !menu.values.includes("frontend")) menu.member.roles.remove(frontend.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("backend")) menu.member.roles.remove(backend.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("fullstack")) menu.member.roles.remove(fullstack.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("mobile")) menu.member.roles.remove(mobile.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("datascience")) menu.member.roles.remove(datascience.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("devops")) menu.member.roles.remove(devops.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("ai")) menu.member.roles.remove(ai.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("agile")) menu.member.roles.remove(agile.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("gaming")) menu.member.roles.remove(gaming.id)
+            if(menu.member.roles.cache.has(backend.id) && !menu.values.includes("marketing")) menu.member.roles.remove(marketing.id)
 
-        menu.reply({content: "¡ Tu rol ha cambiado !", ephemeral: true})
-    })
+            menu.reply({content: "¡ Tu rol ha cambiado !", ephemeral: true})
+
+            const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                .setCustomId('interesado')
+                .setLabel('Estoy interesado!! 👩🏻‍💻 ')
+                .setStyle('PRIMARY'),
+
+                new MessageButton()
+                .setCustomId('no')
+                .setLabel('Por ahora no!! 👀 ')
+                .setStyle('DANGER'),
+            )
+
+            menu.member.send(
+                {
+                    content:'Hola 😄 ¿Deseas mantenerte informado acerca de los ultimos trabajos segun tus ROLES?!', components:[row]
+                }
+            )
+           
+        })
     },
 };
