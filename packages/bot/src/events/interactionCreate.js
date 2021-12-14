@@ -22,7 +22,7 @@ module.exports = {
                         let newembed = new Discord.MessageEmbed()
                                         .setTitle("Hi")
                                         .setColor(0x008000)
-                                        .setDescription(`Aqui tienes las ultimas ofertas basadas en el rol ${role.name}\n`);
+                                        .setDescription(`¡Genial! 😃 🙌 Aquí te mostramos las ofertas para ti basadas en tus roles:${role.name}\n`);
                         embeds = [...embeds, newembed]
                         return embeds = [...embeds,...jobresults]
                     }
