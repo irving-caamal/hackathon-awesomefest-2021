@@ -1,9 +1,6 @@
 const config = require('./config')
 const Discord  = require("discord.js");
-const { MessageEmbed } = require("discord.js");
-const fetch = require("node-fetch");
-const {searchJobs} = require('./services/getOnBoardApi')
-const { Collection, Intents } = require("discord.js");
+const { Collection } = require("discord.js");
 
 const fs = require('fs');
 
@@ -29,7 +26,6 @@ for(const file of eventFiles){
 
 client.commands = new Collection();
 
-
 for(const file of commandFiles){
     const command = require(`./commands/${file}`);
 
@@ -42,9 +38,4 @@ client.on("ready", () => {
     console.log("Get On Bot is online!!")
 });
 
-client.on("messageCreate", async (message) => { 
-    
- });
-
-console.log({config: config.DISCORD_TOKEN})
 client.login(config.DISCORD_TOKEN);
