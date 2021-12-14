@@ -11,7 +11,7 @@ for(const file of commandFiles){
     const command = require(`./commands/${file}`);
     commands.push(command.data.toJSON());
 }
-//console.log({config: config});
+
 const rest = new REST({version:'9'}).setToken(config.DISCORD_TOKEN);
 
 (async () =>{
