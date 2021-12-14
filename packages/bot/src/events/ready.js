@@ -5,14 +5,11 @@ module.exports = {
     once:true,
     async execute (client){
     
+
         client.user.setActivity("Getting Jobs!! 👌",{
             type: "COMPETING",
             name: "Discord",
         });
-
-        const channel_welcome = client.channels.cache.get("920188931935457290");
-
-        if(!channel_welcome) return;
 
     let Embed = new Discord.MessageEmbed()
     .setColor(client.color)
