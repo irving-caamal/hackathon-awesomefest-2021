@@ -1,7 +1,7 @@
 const config = require('./config')
 const Discord  = require("discord.js");
 const { Collection } = require("discord.js");
-
+const keepAlive = require("./server");
 const fs = require('fs');
 
 const client = new Discord.Client({
@@ -37,5 +37,5 @@ client.on("ready", () => {
     console.log(Guilds);
     console.log("Get On Bot is online!!")
 });
-
+keepAlive();
 client.login(config.DISCORD_TOKEN);

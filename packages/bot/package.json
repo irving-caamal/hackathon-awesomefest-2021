@@ -6,9 +6,9 @@
   "author": "",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "node src/index.js",
     "postinstall": "patch-package",
-    "dev": "nodemon src/index.js"
+    "dev": "node src/index.js"
   },
   "license": "MIT",
   "dependencies": {
