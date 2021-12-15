@@ -28,11 +28,10 @@ module.exports = {
                 rolesString = ` ${removeEmojis(role.name)}`;
                 const findedJobsByRole = await fetchJobs(rolesString);
                 if(!findedJobsByRole.length > 0) {return}
-            
                 let newembed = new Discord.MessageEmbed()
                                 .setTitle("Hi")
                                 .setColor(0x008000)
-                                .setDescription(`Aqui tienes las ultimas ofertas basadas en tu rol\n`);
+                                .setDescription(`Aqui tienes las ultimas ofertas basadas en tu rol ${rolesString}\n`);
                 embeds = [...embeds, newembed]
                 return embeds = [...embeds,...findedJobsByRole]
             }
