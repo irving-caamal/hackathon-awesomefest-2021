@@ -1,4 +1,4 @@
-const {searchJobs} = require('../services/getOnBoardApi')
+const {searchJobs} = require('./getOnBoardApi')
 async function fetchJobs(query) {
     const jobs = await searchJobs(query)
             if (!jobs.data) {
