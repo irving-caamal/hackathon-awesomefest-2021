@@ -276,22 +276,22 @@ module.exports = {
         let estudiante = channel.guild.roles.cache.get("920350950873509978")
         let mentor = channel.guild.roles.cache.get("920350986319573043")
 
-            for(let i = 0; i < menu.values.length; i++) {
-                if(menu.values[i] === "buscando") menu.member.roles.add(buscando.id)
-                if(menu.values[i] === "contrabajo") menu.member.roles.add(contrabajo.id)
-                if(menu.values[i] === "contratando") menu.member.roles.add(contratando.id)
-                if(menu.values[i] === "estudiante") menu.member.roles.add(estudiante.id)
-                if(menu.values[i] === "mentor") menu.member.roles.add(mentor.id)
+            for(let i = 0; i < menu2.values.length; i++) {
+                if(menu2.values[i] === "buscando") menu2.member.roles.add(buscando.id)
+                if(menu2.values[i] === "contrabajo") menu2.member.roles.add(contrabajo.id)
+                if(menu2.values[i] === "contratando") menu2.member.roles.add(contratando.id)
+                if(menu2.values[i] === "estudiante") menu2.member.roles.add(estudiante.id)
+                if(menu2.values[i] === "mentor") menu2.member.roles.add(mentor.id)
             }
 
-            if(menu.member.roles.cache.has(buscando.id) && !menu.values.includes("buscando")) menu.member.roles.remove(buscando.id)
-            if(menu.member.roles.cache.has(contrabajo.id) && !menu.values.includes("contrabajo")) menu.member.roles.remove(contrabajo.id)
-            if(menu.member.roles.cache.has(contratando.id) && !menu.values.includes("contratando")) menu.member.roles.remove(contratando.id)
-            if(menu.member.roles.cache.has(estudiante.id) && !menu.values.includes("estudiante")) menu.member.roles.remove(estudiante.id)
-            if(menu.member.roles.cache.has(mentor.id) && !menu.values.includes("mentor")) menu.member.roles.remove(mentor.id)
+            if(menu2.member.roles.cache.has(buscando.id) && !menu2.values.includes("buscando")) menu2.member.roles.remove(buscando.id)
+            if(menu2.member.roles.cache.has(contrabajo.id) && !menu2.values.includes("contrabajo")) menu2.member.roles.remove(contrabajo.id)
+            if(menu2.member.roles.cache.has(contratando.id) && !menu2.values.includes("contratando")) menu2.member.roles.remove(contratando.id)
+            if(menu2.member.roles.cache.has(estudiante.id) && !menu2.values.includes("estudiante")) menu2.member.roles.remove(estudiante.id)
+            if(menu2.member.roles.cache.has(mentor.id) && !menu2.values.includes("mentor")) menu2.member.roles.remove(mentor.id)
            
 
-            menu.reply({content: "¡ Tu rol ha cambiado !", ephemeral: true})
+            menu2.reply({content: "¡ Tu rol ha cambiado !", ephemeral: true})
         })
 
 
