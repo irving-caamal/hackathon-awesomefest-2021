@@ -9,7 +9,7 @@
 
 > Bot de discord el cual cumple con funcionalidades utiles para el servidor de discord de la plataforma Get On Board.
 
-### Que hace nuestro bot?
+### ¿Qué hace nuestro bot?
 
 1. Asignar Roles en base al Pais de Origen del usuario
 2. Asignar Roles en base a las habilidades o Profesion del usuario
