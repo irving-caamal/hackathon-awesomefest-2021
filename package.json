@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "author": "",
   "scripts": {
-    "build": "tsc",
     "start": "node src/index.js",
     "postinstall": "patch-package",
     "dev": "node src/index.js"
